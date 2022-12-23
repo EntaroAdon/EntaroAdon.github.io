@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Java基础语法</title>
+    <url>/2021/12/30/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
+<li>包名：小写</li>
+<li>类名接口名：首字母大写</li>
+<li>变量名方法名：首字母小写，从第二个单词开始首字母大写</li>
+<li>常量名：所有字母都大写，不同单词之间用下划线分割</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="使用变量的注意点："><a href="#使用变量的注意点：" class="headerlink" title="使用变量的注意点："></a>使用变量的注意点：</h3><ul>
+<li>Java中的变量都必须要先定义后使用</li>
+<li>变量的作用域定义在{}内</li>
+<li>只有在作用域中才可以使用变量</li>
+<li>同一个作用域内，不能定义两个相同名称的变量</li>
+</ul>
+<h3 id="变量的基本类型"><a href="#变量的基本类型" class="headerlink" title="变量的基本类型"></a>变量的基本类型</h3><h4 id="基本数据类型（primitive-type）"><a href="#基本数据类型（primitive-type）" class="headerlink" title="基本数据类型（primitive type）"></a>基本数据类型（primitive type）</h4><ul>
+<li>数值型（整数型byte,short,int，long和浮点数double，float）</li>
+<li>字符型（char)</li>
+<li>布尔型（boolean）</li>
+</ul>
+<h3 id="引用数据类型（reference-type）"><a href="#引用数据类型（reference-type）" class="headerlink" title="引用数据类型（reference type）"></a>引用数据类型（reference type）</h3><ul>
+<li>类（class）</li>
+<li>接口（interfence）</li>
+<li>数组（array）</li>
+</ul>
+<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><p>对于</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">byte</span> <span class="type">short</span> <span class="type">int</span> <span class="type">long</span> <span class="type">float</span> <span class="type">double</span></span><br></pre></td></tr></table></figure>
+
+<p>之间做运算，自动向右转换</p>
+<p><strong>如果是byte，short和char之间做运算，结果为int</strong></p>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p><strong>是自动类型转换的逆运算</strong></p>
+<p>例如：想要把一个double类型的变量转换为一个int类型变量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//报告错误</span></span><br><span class="line"><span class="type">double</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">12.3</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">//正确</span></span><br><span class="line"><span class="type">double</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">12.3</span></span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> (<span class="type">int</span>) a;</span><br></pre></td></tr></table></figure>
+
+<p>但是注意会损失精度</p>
+<h3 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>是一个引用数据类型</li>
+<li>可以直接串接一个字符串或者串接一个其他类型的变量</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><ol>
+<li><p>关于&#x2F;和%</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">18</span>;</span><br><span class="line">System.out.println(a / <span class="number">10</span>);<span class="comment">//输出为1</span></span><br><span class="line">System.out.println(a % <span class="number">10</span>);<span class="comment">//输出为8</span></span><br></pre></td></tr></table></figure>
+
+<p>前者为除号，后者为取余</p>
+</li>
+<li><p>关于&#x3D;和&#x3D;&#x3D;</p>
+<p><em><strong><u>前者为赋值符号，后者为数学意义上的等号</u></strong></em></p>
+</li>
+<li><p>关于+&#x3D;</p>
+<p>看例子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">a = a+ <span class="number">2</span>;<span class="comment">//报错，无法 将一个int类型转换为short类型。需要进行强制类型转换</span></span><br><span class="line">a += <span class="number">2</span>;<span class="comment">//正确。a = 12</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说，+&#x3D;不改变变量本身的类型</p>
+</li>
+</ol>
+<h3 id="自加和自减操作-关于a-和-a的区别）"><a href="#自加和自减操作-关于a-和-a的区别）" class="headerlink" title="自加和自减操作(关于a++和++a的区别）"></a>自加和自减操作(关于a++和++a的区别）</h3><p>首先看一段代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">System.out.println(a++);</span><br><span class="line">System.out.println(++a);</span><br></pre></td></tr></table></figure>
+
+<p>输出为10和12。</p>
+<p>再看一段代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a++;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为11和10</p>
+<p>最后一段代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> ++a;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为11和11</p>
+<p><em><strong><u>也就是说，a++是先赋值，再自加，++a是先自加，再赋值。</u></strong></em></p>
+<h3 id="关于三元运算符"><a href="#关于三元运算符" class="headerlink" title="关于三元运算符"></a>关于三元运算符</h3><p>下面三种形式是等同的</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> a &lt; <span class="number">30</span> ? <span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"><span class="type">boolean</span> b &lt; <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"><span class="keyword">if</span>(a &lt; <span class="number">30</span> ) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的一些特点"><a href="#数组的一些特点" class="headerlink" title="数组的一些特点"></a>数组的一些特点</h3><ul>
+<li>数组是在内存中分配了一块连续的内存空间</li>
+<li>数组是一种引用数据类型</li>
+<li>数组存储的元素可以是引用数据类型也可以是基本数据类型</li>
+<li>数组一旦初始化则其长度就固定了</li>
+</ul>
+<h3 id="数组的声明和初始化"><a href="#数组的声明和初始化" class="headerlink" title="数组的声明和初始化"></a>数组的声明和初始化</h3><h4 id="静态初始化"><a href="#静态初始化" class="headerlink" title="静态初始化"></a>静态初始化</h4><p>数组的初始化和数组元素的赋值同时进行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] array;</span><br><span class="line">array = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="动态初始化"><a href="#动态初始化" class="headerlink" title="动态初始化"></a>动态初始化</h4><p>数组的初始化和数组元素的赋值分开进行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<h4 id="一些错误的写法"><a href="#一些错误的写法" class="headerlink" title="一些错误的写法"></a>一些错误的写法</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[];</span><br><span class="line"><span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组的调用"><a href="#数组的调用" class="headerlink" title="数组的调用"></a>数组的调用</h3><p>通过索引调用。索引的取值范围为0到length-1</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String[] s1 = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">s1[<span class="number">0</span>] = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">s1[<span class="number">1</span>] = <span class="string">&quot;李四&quot;</span>;</span><br><span class="line">s1[<span class="number">2</span>] = <span class="string">&quot;王五&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组长度的获取"><a href="#数组长度的获取" class="headerlink" title="数组长度的获取"></a>数组长度的获取</h3><p>通过length方法来获取</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(s1.length);</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，数组的长度与输入的数组元素多少无关</p>
+<h3 id="数组的默认化初始值"><a href="#数组的默认化初始值" class="headerlink" title="数组的默认化初始值"></a>数组的默认化初始值</h3><p>在Java中，如果采用动态初始化数组的方式，当在内存中开辟一块连续的空间的时候，JVM会自动为该数组分配初始化的值</p>
+<ol>
+<li><p>如果数组为整型数组，那么数组的默认初始化值为0</p>
+</li>
+<li><p>如果数组为浮点数，那么数组的默认初始化值为0.0</p>
+</li>
+<li><p>如果数组为char类型数组，那么数组的默认初始化值为0。***<u>而非’0’</u>***</p>
+</li>
+<li><p>如果数组为boolean类型数组，那么数组的默认初始化值为false</p>
+</li>
+<li><p>如果数组为String类型数组，那么数组的默认初始化值为null</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编程基础学习</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>数组</tag>
+        <tag>变量</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象编程(一)</title>
+    <url>/2022/01/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="面向对象三大特征"><a href="#面向对象三大特征" class="headerlink" title="面向对象三大特征"></a>面向对象三大特征</h2><ol>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="面向对象-OOP-与面向过程-POP"><a href="#面向对象-OOP-与面向过程-POP" class="headerlink" title="面向对象(OOP)与面向过程(POP)"></a>面向对象(OOP)与面向过程(POP)</h2><h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><p>强调功能行为，以函数为单位考虑怎么做</p>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>强调具备了功能的对象，以类或对象为基本单位，强调谁来做</p>
+<h3 id="举例理解"><a href="#举例理解" class="headerlink" title="举例理解"></a>举例理解</h3><p>把大象装进冰箱：</p>
+<ol>
+<li>面向过程<ul>
+<li>把冰箱门打开</li>
+<li>把大象塞进冰箱</li>
+<li>关闭冰箱门</li>
+</ul>
+</li>
+<li>面向对象<ul>
+<li>定义一个类人，人具有打开，关闭冰箱，抬起大象的功能</li>
+<li>定义一个冰箱，有打开和关闭的功能</li>
+<li>定义一个大象，有进入冰箱的功能</li>
+</ul>
+</li>
+</ol>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><h3 id="面向对象思想概述"><a href="#面向对象思想概述" class="headerlink" title="面向对象思想概述"></a>面向对象思想概述</h3><p>类(class)和对象(object)是面向对象的核心概念，</p>
+<ul>
+<li>类是对一类事物的描述，是抽象，概念上的定义</li>
+<li>对象是类的实例化</li>
+</ul>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day02.oop;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PersonTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">        p1.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        p1.age = <span class="number">12</span>;</span><br><span class="line">        p1.isMale = <span class="literal">true</span>;</span><br><span class="line">        p1.sleep();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">boolean</span> isMale;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;在吃饭&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sleep</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;在睡觉&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h2><h3 id="匿名对象的理解"><a href="#匿名对象的理解" class="headerlink" title="匿名对象的理解"></a>匿名对象的理解</h3><p>有一个类如下;</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Phone</span> &#123;</span><br><span class="line">    <span class="type">double</span> price;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMail</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;正在发送邮件&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">playGame</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;正在打游戏&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用匿名对象如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day03;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PhoneTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Phone</span>().sendMail();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Phone</span>().playGame();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Phone</span>().price = <span class="number">1999</span>;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> <span class="title class_">Phone</span>().price);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">正在发送邮件</span><br><span class="line">正在打游戏</span><br><span class="line">0.0</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>可以看到匿名对象的最大特征是只能调用一次</strong></em></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>匿名对象指的是创建的对象没有显式的赋给一个变量名</p>
+<h3 id="匿名对象的作用"><a href="#匿名对象的作用" class="headerlink" title="匿名对象的作用"></a>匿名对象的作用</h3><p>例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PhoneTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       <span class="type">PhoneMall</span> <span class="variable">phoneMall</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PhoneMall</span>();</span><br><span class="line">        phoneMall.show(<span class="keyword">new</span> <span class="title class_">Phone</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PhoneMall</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">(Phone phone)</span> &#123;</span><br><span class="line">        phone.playGame();</span><br><span class="line">        phone.sendMail();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在同一个类当中，允许存在多个同名方法，只要他们的参数个数或者参数类型不同即可</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ol>
+<li>与返回值类型无关</li>
+<li>参数列表必须不同（参数个数或者参数类型）</li>
+<li>调用时，根据方法参数列表不同来区分</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回两个整数和</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>&#123;&#125;</span><br><span class="line"><span class="comment">//返回三个整数和</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c)</span>&#123;&#125;</span><br><span class="line"><span class="comment">//返回两个小数和</span></span><br><span class="line"><span class="type">double</span> <span class="title function_">add</span><span class="params">(<span class="type">double</span> a,<span class="type">double</span> b)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="可变个数形参"><a href="#可变个数形参" class="headerlink" title="可变个数形参"></a>可变个数形参</h3><h4 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h4><p>数据类型名…变量名</p>
+<h4 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Arguments</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Arguments</span> <span class="variable">arguments</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Arguments</span>();</span><br><span class="line">        arguments.show(<span class="number">12</span>);</span><br><span class="line">        arguments.show(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">        arguments.show(<span class="string">&quot;hello&quot;</span>,<span class="string">&quot;world&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用第一个show方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用第二个show方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">show</span><span class="params">(String...s)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用第三个show方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出为</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">调用第一个show方法</span><br><span class="line">调用第二个show方法</span><br><span class="line">调用第三个show方法</span><br></pre></td></tr></table></figure>
+
+<p>如果注释掉第二个show方法那么输出为</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line">调用第一个<span class="keyword">show</span>方法</span><br><span class="line">调用第三个<span class="keyword">show</span>方法</span><br><span class="line">调用第三个<span class="keyword">show</span>方法</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法的值传递机制"><a href="#方法的值传递机制" class="headerlink" title="方法的值传递机制"></a>方法的值传递机制</h3><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>方法必须由所在类或者类的一个实例化对象调用才有意义，如果方法有参数，那么</p>
+<ol>
+<li>形参：方法声明时候的参数</li>
+<li>实参：方法调用的时候传递给形参的参数值</li>
+</ol>
+<h4 id="Java中实参值如何传递给方法"><a href="#Java中实参值如何传递给方法" class="headerlink" title="Java中实参值如何传递给方法"></a>Java中实参值如何传递给方法</h4><p>Java中唯一的传值方式是值传递</p>
+<ul>
+<li>如果变量是基本数据类型，此时赋值的是变量所保存的数据值</li>
+<li>如果变量是引用数据类型，此时赋值的是变量所保存的数据的地址值</li>
+</ul>
+<h4 id="基本数据类型值传递"><a href="#基本数据类型值传递" class="headerlink" title="基本数据类型值传递"></a>基本数据类型值传递</h4><p>基本数据类型值传递传递的变量保存的数据值</p>
+<p>首先看数据交换的代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day01;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    方法的形参的传递机制：值传递</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ValueTransferTest01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        int temp = m;</span></span><br><span class="line"><span class="comment">//        m = n;</span></span><br><span class="line"><span class="comment">//        n = temp;</span></span><br><span class="line"></span><br><span class="line">        <span class="type">ValueTransferTest01</span> <span class="variable">valueTransferTest01</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ValueTransferTest01</span>();</span><br><span class="line">        valueTransferTest01.swap(m,n);</span><br><span class="line"></span><br><span class="line">        System.out.println(m);</span><br><span class="line">        System.out.println(n);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> m;</span><br><span class="line">        m = n;</span><br><span class="line">        n = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行之后可以发现，如果交换使用的是注释掉的代码，那么m,n的值会交换，但是使用swap方法，那么他们的值不会发生交换</p>
+<p>在上面一段代码中，声明m和n的值会在栈中声明两个变量m和n，值分别为10和20。当调用swap方法的时候，会在栈中又声明了一个m和一个n，并且把main（）方法中的m和n的值赋值给swap方法中的m和n。当做完交换之后，只是把swap方法中的m和n的值做了一个交换，main()方法中的值没有发送改变</p>
+<h4 id="引用数据类型值传递"><a href="#引用数据类型值传递" class="headerlink" title="引用数据类型值传递"></a>引用数据类型值传递</h4><p>引用数据类型传递的是变量的地址值</p>
+<p>首先定义一个Person类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">introduce</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我叫&quot;</span> + name + <span class="string">&quot;，我今年&quot;</span> + age + <span class="string">&quot;岁了.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PersonTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">person01</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">        person01.name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">        person01.age = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">Person</span> <span class="variable">person02</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">        person02.name = <span class="string">&quot;李四&quot;</span>;</span><br><span class="line">        person02.age = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">PersonTest</span> <span class="variable">personTest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PersonTest</span>();</span><br><span class="line">        personTest.swap(person01,person01);</span><br><span class="line"></span><br><span class="line">        person01.introduce();</span><br><span class="line">        person02.introduce();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swap</span> <span class="params">(Person person01,Person person02)</span>&#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">        temp = person01;</span><br><span class="line">        person01 = person02;</span><br><span class="line">        person02 = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出后可以发现，person01和person02的值没有发生改变</p>
+<p>但是如果换一种方式：</p>
+<p>定义一个类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="type">int</span> m;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> day02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Data</span> <span class="variable">data</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Data</span>();</span><br><span class="line">        data.m = <span class="number">10</span>;</span><br><span class="line">        data.n = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">DataTest</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DataTest</span>();</span><br><span class="line">        test.swap(data);</span><br><span class="line">        System.out.println(data.m);</span><br><span class="line">        System.out.println(data.n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> data.m;</span><br><span class="line">        data.m = data.n;</span><br><span class="line">        data.n = temp;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出之后可以发现交换了m和n的值</p>
+<p>当声明了一个Data类型的对象的时候，在栈中有一块名为data的空间，这个空间的地址假设是0x1111，这个地址在对应的堆空间中，声明了m&#x3D;10和n&#x3D;20.当调用swap方法的时候，会在栈中又申请了一个名为data的空间。当进行值传递的时候，会把第一个声明data的地址值传递给data。也就是说，第二次开辟的data空间，同样也指向地址为0x1111的堆空间。那么如果在swap方法中发生交换的话，main方法的data的两个属性也会发生交换。</p>
+<h2 id="封装性"><a href="#封装性" class="headerlink" title="封装性"></a>封装性</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p><em><strong><u>程序设计追求高内聚，低耦合</u></strong></em></p>
+<ul>
+<li>高内聚：类的内部数据细节自己完成，不允许外部干涉</li>
+<li>低耦合：仅对外暴露少量方法允许调用</li>
+</ul>
+<h3 id="封装性体现"><a href="#封装性体现" class="headerlink" title="封装性体现"></a>封装性体现</h3><ol>
+<li>私有化方法</li>
+<li>私有化属性</li>
+<li>单例模式</li>
+</ol>
+<h3 id="四种权限修饰符"><a href="#四种权限修饰符" class="headerlink" title="四种权限修饰符"></a>四种权限修饰符</h3><p>四种权限修饰符权限由小到大依次为：private,缺省,protected,public</p>
+<h4 id="对于属性"><a href="#对于属性" class="headerlink" title="对于属性"></a>对于属性</h4><table>
+<thead>
+<tr>
+<th align="center">修饰符</th>
+<th>类内部</th>
+<th>同一个包</th>
+<th>不通包的子类</th>
+<th>同一个工程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">private</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">default</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">protected</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td align="center">Public</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h4 id="对于类"><a href="#对于类" class="headerlink" title="对于类"></a>对于类</h4><p>只有public和default可以修饰类</p>
+<ul>
+<li>class类可以在任何地方被访问</li>
+<li>dafault类只能在同一个包下被访问</li>
+</ul>
+<h2 id="构造器-constructor"><a href="#构造器-constructor" class="headerlink" title="构造器(constructor)"></a>构造器(constructor)</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>创造对象，初始化对象的属性</p>
+<h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><ol>
+<li>如果没有显示的定义的构造器的话，JVM默认提供一个空参的构造器</li>
+<li>定义构造器的格式：权限修饰符 类名（形参列表）{}</li>
+<li>构造器和方法的区别：方法需要使用对象来调用，而构造器是用来创造对象的</li>
+<li>一个类中的多个构造器构成重载</li>
+<li>如果声明了任何一个构造器，则JVM默认不提供任何空参构造器</li>
+<li>一个类中至少有一个构造器</li>
+</ol>
+<h3 id="属性赋值的顺序"><a href="#属性赋值的顺序" class="headerlink" title="属性赋值的顺序"></a>属性赋值的顺序</h3><ol>
+<li>默认初始化值</li>
+<li>显示初始化值</li>
+<li>构造器赋值</li>
+<li>通过对象调用</li>
+</ol>
+<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>有一个类，这个类有一个无参构造器，有属性，并且有相应的get和set方法</p>
+<h2 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>将整个程序设计为三个层次：</p>
+<ol>
+<li>模型层（model）主要处理数据<ul>
+<li>数据对象封装：model.bean</li>
+<li>数据库操作类：model.dao</li>
+<li>数据库：model.db</li>
+</ul>
+</li>
+<li>控制层（controller）处理业务逻辑<ul>
+<li>应用界面相关：controller.activity</li>
+<li>存放fragment：controller.fragment</li>
+<li>显示列表的适配器：controller.adapter</li>
+<li>服务相关的：controller.service</li>
+<li>抽取的基础类：controller.base</li>
+</ul>
+</li>
+<li>视图层（view) 显示数据<ul>
+<li>相关工具类：view.utils</li>
+<li>自定义view: view.ui</li>
+</ul>
+</li>
+</ol>
+<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><h3 id="继承性的好处"><a href="#继承性的好处" class="headerlink" title="继承性的好处"></a>继承性的好处</h3>]]></content>
+      <categories>
+        <category>编程基础学习</category>
+      </categories>
+      <tags>
+        <tag>面向对象编程</tag>
+        <tag>构造器</tag>
+        <tag>代码块</tag>
+        <tag>内部类</tag>
+      </tags>
+  </entry>
+</search>
